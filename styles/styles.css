@@ -34,7 +34,7 @@
     font-size: 12px;
     text-overflow: unset;
     padding: unset;
-    animation: 200ms slideout;
+    transition: 200ms ease;
 }
 
 .kts-ext-button-default:hover {
@@ -69,15 +69,5 @@
 
     to {
         right: var(--button-visible);
-    }
-}
-
-@keyframes slideout {
-    from {
-        right: var(--button-visible);
-    }
-
-    to {
-        right: var(--button-hidden);
     }
 }
