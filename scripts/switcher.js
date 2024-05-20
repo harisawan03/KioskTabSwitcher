@@ -27,8 +27,6 @@ function sendNextMessage() {
     chrome.runtime.sendMessage({ type: 'next' });
 }
 
-prevBtn.addEventListener('touchend', sendPrevMessage);
 prevBtn.addEventListener('click', sendPrevMessage);
 
-nextBtn.addEventListener('touchend', sendNextMessage);
 nextBtn.addEventListener('click', sendNextMessage);
