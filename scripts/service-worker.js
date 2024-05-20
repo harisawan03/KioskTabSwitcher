@@ -42,7 +42,7 @@ async function nextTab() {
 
 }
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message) => {
 
     if (message.type === 'prev') {
         prevTab();
