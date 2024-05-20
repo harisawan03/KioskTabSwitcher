@@ -1,43 +1,79 @@
 :root {
     --main-color: #2f3ec5;
+    --hover-color: #5f6ee5;
+    --active-color: #0f1e85;
+    --button-hidden: -100px;
+    --button-visible: 6px;
 }
 
 .kts-ext-cont {
     position: fixed;
     width: 40px;
-    height: 100px;
+    height: 140px;
     bottom: 40px;
     right: 0px;
     border-right: 5px solid var(--main-color);
     z-index: 9999;
 }
 
+.kts-ext-cont:hover {
+    width: 100px;
+}
+
 .kts-ext-button-default {
     position: fixed;
     width: 90px;
-    height: 30px;
+    height: 50px;
+    right: var(--button-hidden);
     z-index: 9999;
     border: none;
     color: white;
     background-color: var(--main-color);
+    border-radius: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-overflow: unset;
+    padding: unset;
+    animation: 200ms slideout;
+}
+
+.kts-ext-button-default:hover {
+    background-color: var(--hover-color);
+}
+
+.kts-ext-button-default:active {
+    background-color: var(--active-color);
 }
 
 .kts-ext-button-prev {
-    bottom: 100px;
-    right: -100px;
+    bottom: 120px;
 }
 
 .kts-ext-button-next {
     bottom: 50px;
-    right: -100px;
 }
 
-.kts-ext-cont:hover .kts-ext-button-prev {
-    bottom: 100px;
-    right: 6px;
+.kts-ext-cont:hover .kts-ext-button-default {
+    animation: 200ms slidein;
+    right: var(--button-visible);
 }
 
-.kts-ext-cont:hover .kts-ext-button-next {
-    bottom: 50px;
-    right: 6px;
+@keyframes slidein {
+    from {
+        right: var(--button-hidden);
+    }
+
+    to {
+        right: var(--button-visible);
+    }
+}
+
+@keyframes slideout {
+    from {
+        right: var(--button-visible);
+    }
+
+    to {
+        right: var(--button-hidden);
+    }
 }
