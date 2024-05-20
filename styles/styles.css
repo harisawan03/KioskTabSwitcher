@@ -9,7 +9,7 @@
 .kts-ext-cont {
     position: fixed;
     width: 40px;
-    height: 140px;
+    height: 210px;
     bottom: 40px;
     right: 0px;
     border-right: 5px solid var(--main-color);
@@ -51,6 +51,10 @@
 
 .kts-ext-button-next {
     bottom: 50px;
+}
+
+.kts-ext-button-close {
+    bottom: 190px;
 }
 
 .kts-ext-cont:hover .kts-ext-button-default {

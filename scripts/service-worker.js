@@ -42,6 +42,19 @@ async function nextTab() {
 
 }
 
+async function closeTab() {
+
+    // Get all tabs
+    const tabs = await chrome.tabs.query({ currentWindow: true });
+
+    // Find the current active tab
+    const currentTab = tabs.find(tab => tab.active);
+
+    // Close the current tab
+    chrome.tabs.remove(currentTab.id);
+
+}
+
 chrome.runtime.onMessage.addListener((message) => {
 
     if (message.type === 'prev') {
@@ -50,6 +63,10 @@ chrome.runtime.onMessage.addListener((message) => {
 
     if (message.type === 'next') {
         nextTab();
+    }
+
+    if (message.type === 'close') {
+        closeTab();
     }
 
 });
