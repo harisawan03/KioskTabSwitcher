@@ -1,0 +1,22 @@
+{
+  "manifest_version": 3,
+  "name": "Kiosk Tab Switcher",
+  "description": "Switch between tabs while in Kiosk Mode",
+  "version": "1.0",
+  "permissions": ["tabs"],
+  "action": {
+    "default_popup": "switcher.html",
+    "default_icon": "tabs.png"
+  },
+  "background": {
+    "service_worker": "scripts/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/switcher.js"],
+      "css": ["styles/styles.css"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
