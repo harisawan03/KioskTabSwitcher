@@ -1,60 +1,61 @@
 async function prevTab() {
 
-    // Get all tabs
+    // get all tabs
     const tabs = await chrome.tabs.query({ currentWindow: true });
 
-    // Find the current active tab
+    // find the current active tab
     const currentTab = tabs.find(tab => tab.active);
 
-    // Find the index of the current tab
+    // find the index of the current tab
     const currentIndex = tabs.indexOf(currentTab);
 
-    // Calculate the index of the next tab
+    // calculate the index of the next tab
     const nextIndex = currentIndex === 0 ? tabs.length - 1 : (currentIndex - 1)
 
-    // Get the next tab
+    // get the next tab
     const nextTab = tabs[nextIndex];
 
-    // Activate the next tab
+    // activate the next tab
     chrome.tabs.update(nextTab.id, { active: true });
 
 }
 
 async function nextTab() {
 
-    // Get all tabs
+    // get all tabs
     const tabs = await chrome.tabs.query({ currentWindow: true });
 
-    // Find the current active tab
+    // find the current active tab
     const currentTab = tabs.find(tab => tab.active);
 
-    // Find the index of the current tab
+    // find the index of the current tab
     const currentIndex = tabs.indexOf(currentTab);
 
-    // Calculate the index of the next tab
+    // calculate the index of the next tab
     const nextIndex = (currentIndex + 1) % tabs.length;
 
-    // Get the next tab
+    // get the next tab
     const nextTab = tabs[nextIndex];
 
-    // Activate the next tab
+    // activate the next tab
     chrome.tabs.update(nextTab.id, { active: true });
 
 }
 
 async function closeTab() {
 
-    // Get all tabs
+    // get all tabs
     const tabs = await chrome.tabs.query({ currentWindow: true });
 
-    // Find the current active tab
+    // find the current active tab
     const currentTab = tabs.find(tab => tab.active);
 
-    // Close the current tab
+    // close the current tab
     chrome.tabs.remove(currentTab.id);
 
 }
 
+// listen for a message from content script and take the desired action
 chrome.runtime.onMessage.addListener((message) => {
 
     if (message.type === 'prev') {
